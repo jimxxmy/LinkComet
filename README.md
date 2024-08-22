@@ -31,7 +31,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/jimxxmy/LinkComet">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="UrlShortner/Assets/Images/Logo/icon-512.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">LinkComet</h3>
