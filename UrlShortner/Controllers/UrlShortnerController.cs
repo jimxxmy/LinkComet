@@ -45,6 +45,8 @@ namespace UrlShortner.Controllers
             var shortUrl = _context.ShortenUrls.SingleOrDefault(su => su.ShortCode == shortCode);
             if (shortUrl == null)
                 return NotFound();
+            shortUrl.AccessCount += 1;
+            _context.SaveChanges();
             return Ok(shortUrl);
         }
 
@@ -60,7 +62,7 @@ namespace UrlShortner.Controllers
                 .Single();
 
             existingShortUrl.OriginalUrl = url;
-
+            existingShortUrl.UpdatedAt = DateTime.UtcNow;
             _context.SaveChanges();
 
             return Ok(existingShortUrl);
@@ -76,6 +78,18 @@ namespace UrlShortner.Controllers
 
             _context.ShortenUrls.Remove(_context.ShortenUrls.Where(su => su.ShortCode == shortCode).Single());
             return NoContent();
+        }
+
+        [HttpGet]
+        [Route("shorten/{shortCode}/stats")]
+        [ProducesResponseType<int>(StatusCodes.Status200OK)]
+        public IActionResult GetStatisticsForShortCode(string shortCode)
+        {
+            var isExists = _context.ShortenUrls.Any(su => su.ShortCode == shortCode);
+            if (!isExists) return NotFound();
+
+            var shortUrl = _context.ShortenUrls.Where(su => su.ShortCode == shortCode).Single();
+            return Ok(shortUrl); 
         }
 
         private static string GenerateShortCode()
