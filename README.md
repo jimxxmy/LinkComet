@@ -31,13 +31,14 @@
 <br />
 <div align="center">
   <a href="https://github.com/jimxxmy/LinkComet">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="UrlShortner/Assets/Images/Logo/icon-512.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">LinkComet</h3>
 
   <p align="center">
     ASP.NET Core Web API URL shortener service designed for efficient and customizable URL shortening. Ideal for integrating into your applications or using as a standalone service. You can easily create, retrieve, update and delete short urls.
+    Based on the : https://roadmap.sh/projects/url-shortening-service
     <br />
     <a href="https://github.com/jimxxmy/LinkComet"><strong>Explore the docs »</strong></a>
     <br />
