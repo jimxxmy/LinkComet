@@ -38,6 +38,7 @@
 
   <p align="center">
     ASP.NET Core Web API URL shortener service designed for efficient and customizable URL shortening. Ideal for integrating into your applications or using as a standalone service. You can easily create, retrieve, update and delete short urls.
+    Based on the : https://roadmap.sh/projects/url-shortening-service
     <br />
     <a href="https://github.com/jimxxmy/LinkComet"><strong>Explore the docs »</strong></a>
     <br />
