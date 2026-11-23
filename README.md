@@ -116,7 +116,7 @@ Distributed under the Apache License 2.0. See [`LICENSE.txt`](LICENSE.txt).
 
 ## Contact
 
-Jimit Vaghela on [LinkedIn](https://linkedin.com/in/jimit-vaghela)
+Jimit on [LinkedIn](https://linkedin.com/in/jimit-vaghela)
 
 Project link: [github.com/jimxxmy/LinkComet](https://github.com/jimxxmy/LinkComet)
 
