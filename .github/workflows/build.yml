@@ -1,0 +1,28 @@
+name: Build and test
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore
+        run: dotnet restore UrlShortner.sln
+
+      - name: Build
+        run: dotnet build UrlShortner.sln --no-restore --configuration Release
+
+      - name: Test
+        run: dotnet test UrlShortner.sln --no-build --configuration Release --verbosity normal
