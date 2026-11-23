@@ -1,25 +1,25 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace UrlShortner.Data.Context
 {
     public class UrlShortnerContext : DbContext
     {
+        public const int ShortCodeMaxLength = 16;
+
         public UrlShortnerContext(DbContextOptions<UrlShortnerContext> options)
-        : base(options)
+            : base(options)
         {
         }
-        public UrlShortnerContext()
-        {
-            
-        }
+
         public DbSet<ShortUrl> ShortenUrls { get; set; } = null!;
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
+            modelBuilder.Entity<ShortUrl>(entity =>
             {
-                optionsBuilder.UseSqlServer("Server=(LocalDb)\\MSSQLLocalDB;Database=UrlShortner;MultipleActiveResultSets=true");
-            }
+                entity.Property(su => su.ShortCode).HasMaxLength(ShortCodeMaxLength);
+                entity.HasIndex(su => su.ShortCode).IsUnique();
+            });
         }
     }
 }

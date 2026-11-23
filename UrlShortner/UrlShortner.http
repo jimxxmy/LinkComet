@@ -1,6 +1,31 @@
 @UrlShortner_HostAddress = http://localhost:5121
 
-GET {{UrlShortner_HostAddress}}/weatherforecast/
-Accept: application/json
+### Shorten a URL
+# @name shorten
+POST {{UrlShortner_HostAddress}}/api/urlshortner/shorten
+Content-Type: application/json
+
+{ "url": "https://roadmap.sh/projects/url-shortening-service" }
 
 ###
+@shortCode = {{shorten.response.body.shortCode}}
+
+### Look up a short code
+GET {{UrlShortner_HostAddress}}/api/urlshortner/shorten/{{shortCode}}
+Accept: application/json
+
+### Update the URL behind a short code
+PUT {{UrlShortner_HostAddress}}/api/urlshortner/shorten/{{shortCode}}
+Content-Type: application/json
+
+{ "url": "https://roadmap.sh" }
+
+### Get stats for a short code
+GET {{UrlShortner_HostAddress}}/api/urlshortner/shorten/{{shortCode}}/stats
+Accept: application/json
+
+### Follow the short link (302 redirect)
+GET {{UrlShortner_HostAddress}}/{{shortCode}}
+
+### Delete a short code
+DELETE {{UrlShortner_HostAddress}}/api/urlshortner/shorten/{{shortCode}}
